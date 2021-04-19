@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 //注解保留到什么时间点 : 保留到编译期
 @Retention(RetentionPolicy.CLASS)
-@interface Destination {
+public @interface Destination {
     /**
      * 当前页面的URl，不能为空
      *
