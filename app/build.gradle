@@ -2,6 +2,7 @@ plugins {
     //使用插件
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.rongcheng.router'
 }
 
 //插件配置
