@@ -2,8 +2,13 @@
 buildscript {
     ext.kotlin_version = "1.4.32"
     repositories {
+        //配置maven仓库地址
+        maven {
+            url uri("../repo")
+        }
         google()
         jcenter()
+
     }
     dependencies {
         //声明插件的ID和版本号
@@ -17,6 +22,10 @@ buildscript {
 
 allprojects {
     repositories {
+        //配置maven仓库地址
+        maven {
+            url uri("../repo")
+        }
         google()
         jcenter()
     }
