@@ -1,0 +1,37 @@
+
+include ':app'
+rootProject.name = "FRouter"
+
+
+//println(" this is setting.gradle， path :${rootProject.projectDir} ")
+
+//gradle.addBuildListener(new BuildListener() {
+//    @Override
+//    void buildStarted(Gradle gradle) {
+//        println("buildStarted : $gradle")
+//    }
+//
+//    @Override
+//    void settingsEvaluated(Settings settings) {
+//        println("settingsEvaluated : 初始化阶段完成")
+//
+//    }
+//
+//    @Override
+//    void projectsLoaded(Gradle gradle) {
+//        println("projectsLoaded : $gradle")
+//    }
+//
+//    @Override
+//    void projectsEvaluated(Gradle gradle) {
+//        println("projectsEvaluated : 配置阶段完成")
+//        gradle.rootProject.childProjects.each {name,p->
+//            println(" child project name is : $name  path is :${p.getProjectDir()} ")
+//        }
+//    }
+//
+//    @Override
+//    void buildFinished(BuildResult buildResult) {
+//        println("buildFinished : 构建阶段完成")
+//    }
+//})
