@@ -5,6 +5,10 @@ plugins {
     id 'com.rongcheng.router'
 }
 
+router {
+    wikiDir getRootDir().absolutePath
+}
+
 //插件配置
 android {
     compileSdkVersion 30
@@ -47,13 +51,12 @@ dependencies {
 }
 
 
-
 //println(" this is app build.gradle")
 
-task testTask{
-    doLast{
+task testTask {
+    doLast {
         println(" this is testTask 中的代码")
     }
 }
 println("我是 app-build.gradle 的代码")
-apply from : project.rootProject.file("other.gradle")
+apply from: project.rootProject.file("other.gradle")
