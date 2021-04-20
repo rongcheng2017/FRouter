@@ -3,6 +3,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+
     id 'com.rongcheng.router'
 }
 
@@ -38,11 +39,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    kapt{
-        arguments{
-            arg("root_project_dir",rootProject.projectDir.absolutePath)
-        }
-    }
+//    kapt{
+//        arguments{
+//            arg("root_project_dir",rootProject.projectDir.absolutePath)
+//        }
+//    }
 }
 
 dependencies {

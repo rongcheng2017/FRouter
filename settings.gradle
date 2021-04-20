@@ -2,6 +2,10 @@
 include ':app' ,':router-gradle-plugin',':router-annotations',':router-processor'
 rootProject.name = "FRouter"
 
+//打印本次执行的所有的任务
+//gradle.taskGraph.beforeTask {task->
+//    println("[all-task] "+task.name)
+//}
 
 //println(" this is setting.gradle， path :${rootProject.projectDir} ")
 
