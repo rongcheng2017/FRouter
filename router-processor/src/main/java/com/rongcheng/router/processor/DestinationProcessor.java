@@ -33,9 +33,16 @@ public class DestinationProcessor extends AbstractProcessor {
         }
 
         System.out.println(TAG + " >>> process start ...");
+        //获取注解处理器参数
+        String rootDir =processingEnv.getOptions().get("root_project_dir");
+
+        if (rootDir==null){
+            System.out.println(TAG + " Error :>>>  rootDir is null, user root_project_dir to set  ");
+            throw new RuntimeException("rootDir = null");
+        }
+
         //获取所有标记了@Destination 注解的类的信息
         Set<Element> allDestinationElements = (Set<Element>) roundEnv.getElementsAnnotatedWith(Destination.class);
-
 
         System.out.println(TAG + " >>> all Destination elements count = " + allDestinationElements.size());
         if (allDestinationElements.size() < 1) {

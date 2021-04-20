@@ -2,8 +2,8 @@ plugins {
     //使用插件
     id 'com.android.application'
     id 'kotlin-android'
-    id 'com.rongcheng.router'
     id 'kotlin-kapt'
+    id 'com.rongcheng.router'
 }
 
 router {
@@ -38,6 +38,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    kapt{
+        arguments{
+            arg("root_project_dir",rootProject.projectDir.absolutePath)
+        }
+    }
 }
 
 dependencies {
@@ -55,11 +60,11 @@ dependencies {
 
 
 //println(" this is app build.gradle")
-
-task testTask {
-    doLast {
-        println(" this is testTask 中的代码")
-    }
-}
-println("我是 app-build.gradle 的代码")
-apply from: project.rootProject.file("other.gradle")
+//
+//task testTask {
+//    doLast {
+//        println(" this is testTask 中的代码")
+//    }
+//}
+//println("我是 app-build.gradle 的代码")
+//apply from: project.rootProject.file("other.gradle")
