@@ -4,11 +4,13 @@ apply plugin :'groovy'
 //声明仓库地址
 repositories {
     jcenter()
+    google()
 }
 //声明依赖包
 dependencies {
     implementation gradleApi()
     implementation localGroovy()
+    implementation 'com.android.tools.build:gradle:4.1.3'
 }
 
 
