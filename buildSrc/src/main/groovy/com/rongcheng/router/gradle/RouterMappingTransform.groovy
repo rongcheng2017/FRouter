@@ -7,7 +7,6 @@ import com.android.build.api.transform.TransformException
 import com.android.build.api.transform.TransformInvocation
 import com.android.build.gradle.internal.pipeline.TransformManager
 import com.android.utils.FileUtils
-import org.gradle.api.tasks.bundling.Zip
 
 import java.util.jar.JarOutputStream
 import java.util.zip.ZipEntry

@@ -1,3 +1,4 @@
+include ':router-runtime'
 include ':biz-reading'
 include ':app' ,':router-gradle-plugin',':router-annotations',':router-processor'
 rootProject.name = "FRouter"
