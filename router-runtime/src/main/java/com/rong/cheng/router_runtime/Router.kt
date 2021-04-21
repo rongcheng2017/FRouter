@@ -55,9 +55,9 @@ object Router {
         var targetActivityClass = ""
         mapping.onEach {
             val ruri = Uri.parse(it.key)
-            val rscheme = uri.scheme
-            val rhost = uri.host
-            val rpath = uri.path
+            val rscheme = ruri.scheme
+            val rhost = ruri.host
+            val rpath = ruri.path
 
             if (rscheme == scheme && rhost == host && rpath == path) {
                 targetActivityClass = it.value
@@ -79,8 +79,6 @@ object Router {
                     bundle.putString(splits[0], splits[1])
                 }
             }
-
-
         }
 
         //打开对应的Activity，并传入参数
