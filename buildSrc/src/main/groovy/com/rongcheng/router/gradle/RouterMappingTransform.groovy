@@ -7,6 +7,10 @@ import com.android.build.api.transform.TransformException
 import com.android.build.api.transform.TransformInvocation
 import com.android.build.gradle.internal.pipeline.TransformManager
 import com.android.utils.FileUtils
+import org.gradle.api.tasks.bundling.Zip
+
+import java.util.jar.JarOutputStream
+import java.util.zip.ZipEntry
 
 class RouterMappingTransform extends Transform {
 
@@ -58,7 +62,7 @@ class RouterMappingTransform extends Transform {
         //2.对Input进行二次处理
         //3.将Input拷贝到目标目录(必须)
 
-        RouterMappingCollector routerMappingCollector= new RouterMappingCollector()
+        RouterMappingCollector routerMappingCollector = new RouterMappingCollector()
         //遍历所有的输入
         transformInvocation.inputs.each {
             //文件夹类型
@@ -73,7 +77,7 @@ class RouterMappingTransform extends Transform {
                 FileUtils.copyDirectory(directoryInput.file, destDir)
             }
             //jar
-            it.jarInputs.each {jarInput->
+            it.jarInputs.each { jarInput ->
                 def destDir = transformInvocation.outputProvider.getContentLocation(
                         jarInput.name,
                         jarInput.contentTypes,
@@ -84,8 +88,31 @@ class RouterMappingTransform extends Transform {
                 FileUtils.copyFile(jarInput.file, destDir)
             }
         }
-
         println(" \n ${getName()}收集到的类 ： ${routerMappingCollector.getMappingClassName()}")
+
+        File mappingJarFile = transformInvocation
+                .outputProvider
+                .getContentLocation("router_mapping", getOutputTypes(), getScopes(),
+                        Format.JAR)
+        println(" \n ${getName()} mappingJarFile ： ${mappingJarFile}")
+
+        if (mappingJarFile.getParentFile().exists()) {
+            mappingJarFile.getParentFile().mkdirs()
+        }
+        if (mappingJarFile.exists()) {
+            mappingJarFile.delete()
+        }
+
+        //将生成的字节码，写入本地文件
+        FileOutputStream fos = new FileOutputStream(mappingJarFile)
+        JarOutputStream jarOutputStream = new JarOutputStream(fos)
+        ZipEntry zipEntry = new ZipEntry(RouterMappingByteCoBuilder.CLASS_NAME + ".class")
+
+        jarOutputStream.putNextEntry(zipEntry)
+        jarOutputStream.write(RouterMappingByteCoBuilder.get(routerMappingCollector.mappingClassName))
+        jarOutputStream.closeEntry()
+        jarOutputStream.close()
+        fos.close()
 
     }
 }
