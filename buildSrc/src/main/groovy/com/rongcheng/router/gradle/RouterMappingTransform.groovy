@@ -57,6 +57,9 @@ class RouterMappingTransform extends Transform {
         //1.变量所有的Input(必须)
         //2.对Input进行二次处理
         //3.将Input拷贝到目标目录(必须)
+
+
+        //遍历所有的输入
         transformInvocation.inputs.each {
             //文件夹类型
             it.directoryInputs.each { directoryInput ->
@@ -68,15 +71,15 @@ class RouterMappingTransform extends Transform {
                 )
                 FileUtils.copyDirectory(directoryInput.file, destDir)
             }
+            //jar
             it.jarInputs.each {jarInput->
                 def destDir = transformInvocation.outputProvider.getContentLocation(
                         jarInput.name,
                         jarInput.contentTypes,
                         jarInput.scopes,
-                        jarInput.DIRECTORY
+                        Format.JAR
                 )
                 FileUtils.copyFile(jarInput.file, destDir)
-
             }
         }
 

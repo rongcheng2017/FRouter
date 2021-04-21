@@ -22,6 +22,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="1.7">
       <module name="FRouter.app" target="1.8" />
+      <module name="FRouter.biz-reading" target="1.8" />
       <module name="FRouter.buildSrc" target="1.8" />
       <module name="FRouter.router-gradle-plugin" target="1.8" />
       <module name="FRouter.router-processor" target="1.8" />
